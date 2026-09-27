@@ -5,9 +5,9 @@ import "hardhat/console.sol";
 
 contract Primitivos {
     bool public pausado;
-    bytes32 private saludo = hex"686F6C61";
-
-    bytes32 private trabajo = hex"f3628124d01f2c8a9f22ac23dd967e389bda6e130a8b2af84ca49237b0f3fbc6"; //70916773
+    bytes32 private saludo = hex"686F6C61";    
+    address public direccion = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4; //cuenta1
+    //string private cadena = "trabajo de blockchain";
 
 
     function pausar(bool _pausado) public {
@@ -23,13 +23,14 @@ contract Primitivos {
         return saludo;
     }
 
-    function validarTrabajo(string memory _trabajo) public view {
-        bytes32 cadenaTemp = keccak256(abi.encodePacked(_trabajo));
-        require (cadenaTemp == trabajo, "no es el mismo trabajo"); 
+    function compararCadenas(bytes32 _textoHex) public pure {
+        bytes32 temporalHex = keccak256(abi.encodePacked("trabajo de blockchain"));
+        require (_textoHex == temporalHex, "no es el mismo trabajo"); 
         console.log("Ejecucion de bloque por trabajo correcto");
     }
 
-
-
+    function cambiarDireccion(address _direccion) public {
+        direccion = _direccion;
+    }
 
 }
