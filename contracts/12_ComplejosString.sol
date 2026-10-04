@@ -3,7 +3,7 @@ pragma solidity >=0.8.2 <0.9.0;
 
 import "hardhat/console.sol";
 
-contract DatosComplejos {
+contract ComplejosString {
     string private saludo = "Hola";
     bytes public datos;
 
@@ -15,15 +15,8 @@ contract DatosComplejos {
         return saludo;
     }
 
-    function guardarComoBytes(bytes memory _datos) public {
-        datos = _datos;
-    }
-
-    function guardarComoTexto(string memory texto) public {
-        datos = bytes(texto);
-    }
-
-    function obtenerDatosComoString() public view returns(string memory) {
-        return string(datos);
+    function concatenar(string memory _texto) public {
+        //saludo = string(abi.encodedPacked(saludo, " ", _texto)); // no se utiliza saludo = saludo + nuevaCadena
+        saludo = string.concat(saludo, " ", _texto);
     }
 }
