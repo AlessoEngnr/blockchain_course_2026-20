@@ -23,4 +23,18 @@ contract BibliotecaID000242578 {
         posicion = _posicion;
         direccion = msg.sender;
     }
+
+    // PARTE 3
+    function agregarElemento(uint256 _id, string memory _titulo, string memory _autor, uint256 _anio) public {
+        libros.push(Libro(_id, _titulo, _autor, _anio));
+    }
+
+    function contarElementos() public view returns (uint256) {
+        return libros.length;
+    }
+
+    function cambiarDireccion(address _nuevaDireccion) public {
+        direccion = _nuevaDireccion;
+    }
+
 }
