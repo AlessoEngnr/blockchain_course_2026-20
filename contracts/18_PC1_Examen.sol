@@ -9,6 +9,7 @@ contract BibliotecaID000242578 {
         string titulo;
         string autor;
         uint256 anio;
+        bool estado;
     }
 
     // c) Arreglo público del tipo de la estructura
@@ -25,8 +26,8 @@ contract BibliotecaID000242578 {
     }
 
     // PARTE 3
-    function agregarElemento(uint256 _id, string memory _titulo, string memory _autor, uint256 _anio) public {
-        libros.push(Libro(_id, _titulo, _autor, _anio));
+    function agregarElemento(uint256 _id, string memory _titulo, string memory _autor, uint256 _anio, bool _estado) public {
+        libros.push(Libro(_id, _titulo, _autor, _anio, _estado));
     }
 
     function contarElementos() public view returns (uint256) {
@@ -36,5 +37,15 @@ contract BibliotecaID000242578 {
     function cambiarDireccion(address _nuevaDireccion) public {
         direccion = _nuevaDireccion;
     }
+
+    function inactivar(uint256 _id) public {
+        for (uint256 i = 0; i < libros.length; i++) {
+            if (libros[i].id == _id) {
+                libros[i].estado = false;
+                break;
+            }
+        }
+    }
+
 
 }
